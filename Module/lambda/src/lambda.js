@@ -1,12 +1,22 @@
-exports.handler = (event, context, callback) => {
-  let body = JSON.parse(event.body)
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      //message: 'Welcome to our demo API, here are the details of your request;'
-      message: 'Welcome to our demo API, here are the details of your request; HEADERS:' + event.headers['content-type'] + 'Method:' + event.headers['httpMethod'] + ' {username:' + body.username + ', password:' + body.password + '} '
+var AWS = require('aws-sdk');
+AWS.config.update({region: 'us-east-1'});
+const s3 = new AWS.S3({apiVersion: '2006-03-01'});
+const bucketName = process.env.bucketName;
+const keyName = process.env.keyName;
 
-    })
-  }
-  callback(null, response)
-}
+exports.handler = function(event, context, callback) {
+
+    var bucketParams = {
+        Bucket : bucketName,
+        Key: keyName
+    };
+
+    s3.getObject(bucketParams, function(err, data) {
+       if (err) {
+          console.log("Error", err);
+       } else {
+        callback(null, data.Body.toString());
+      }
+    });
+
+};

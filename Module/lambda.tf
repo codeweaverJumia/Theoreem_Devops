@@ -34,7 +34,11 @@ resource "aws_lambda_function" "service" {
   memory_size = var.memory_size
   role        = aws_iam_role.service.arn
   environment {
-    variables = var.env_vars
+    variables = {
+      bucketName = "${aws_s3_bucket.lambda_storage.bucket}"
+      keyName = "${aws_s3_bucket_object.JsonData.key}"
+
+    }
   }
 }
 

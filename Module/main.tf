@@ -1,4 +1,4 @@
-#Setting up Terraform Remote state;
+#Setting up Terraform Remote state
 terraform {
   backend "s3" {
     encrypt = true    
