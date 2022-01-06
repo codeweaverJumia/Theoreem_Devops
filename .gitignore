@@ -1,0 +1,5 @@
+
+.terraform/modules/modules.json
+.terraform/providers/registry.terraform.io/hashicorp/aws/3.70.0/darwin_amd64/terraform-provider-aws_v3.70.0_x5
+.terraform.lock.hcl
+.terraform/providers/registry.terraform.io/hashicorp/archive/2.2.0/darwin_amd64/terraform-provider-archive_v2.2.0_x5
