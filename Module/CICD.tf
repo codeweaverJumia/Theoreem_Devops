@@ -91,9 +91,10 @@ resource "aws_codebuild_project" "codebuild" {
     type = "CODEPIPELINE"
   }
   environment {
-    compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${var.ci_containers_storage_name}:${var.ci_container_name}"
-    type         = "LINUX_CONTAINER"
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/standard:4.0"
+    type                        = "LINUX_CONTAINER"
+    image_pull_credentials_type = "CODEBUILD"
 
     environment_variable {
       name  = "BUCKET"

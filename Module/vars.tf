@@ -1,5 +1,5 @@
 variable "name" {
-  default = "Theorem"
+  default = "theoremtest2022"
 }
 
 variable "memory_size" {
@@ -20,7 +20,7 @@ variable "ci_containers_storage_name" {
   default = "tf-ci"
 }
 variable "ci_container_name" {
-  default = "Theorem"
+  default = "theorem"
 }
 variable "repo_owner" {
   default = "codeweaverJumia"
@@ -43,7 +43,12 @@ variable "certificate_arn" {
 variable "with_api_gateway" {
   default = true
 }
+variable "subnet_ids" {
+  type    = list
+  default = ["subnet-2128bf47", "subnet-ad13c99c", "subnet-b5135bbb", "subnet-ef3214a2"]
+}
 
-variable "github_Token" {
-  default="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"
+variable "security_group_ids" {
+  type    = list
+  default = ["sg-39c58c32"]
 }

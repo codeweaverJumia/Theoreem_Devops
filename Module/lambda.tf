@@ -19,7 +19,7 @@ resource "aws_s3_bucket_object" "zipped_lambda" {
 resource "aws_s3_bucket_object" "JsonData" {
   bucket = aws_s3_bucket.lambda_storage.bucket
   key    = "Data.json"
-  source = "Data.json"
+  source = "${path.module}/lambda/Data.json"
 }
 
 #Lambda function 
@@ -40,6 +40,10 @@ resource "aws_lambda_function" "service" {
 
     }
   }
+  vpc_config {
+       subnet_ids = var.subnet_ids.ids
+       security_group_ids = var.security_group_ids
+   }
 }
 
 #IAM Policies
