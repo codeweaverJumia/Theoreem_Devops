@@ -43,12 +43,17 @@ variable "certificate_arn" {
 variable "with_api_gateway" {
   default = true
 }
-variable "subnet_ids" {
-  type    = list
-  default = ["subnet-2128bf47", "subnet-ad13c99c", "subnet-b5135bbb", "subnet-ef3214a2"]
-}
+#Remove this if you want to put it behind a VPC
+# variable "subnet_ids" {
+#   type    = list
+#   default = ["subnet-2128bf47", "subnet-ad13c99c", "subnet-b5135bbb", "subnet-ef3214a2"]
+# }
 
-variable "security_group_ids" {
-  type    = list
-  default = ["sg-39c58c32"]
+# variable "security_group_ids" {
+#   type    = list
+#   default = ["sg-39c58c32"]
+# }
+
+variable "github_Token" {
+  default=""
 }

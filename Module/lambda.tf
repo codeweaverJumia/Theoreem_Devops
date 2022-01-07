@@ -40,10 +40,11 @@ resource "aws_lambda_function" "service" {
 
     }
   }
-  vpc_config {
-       subnet_ids = var.subnet_ids.ids
-       security_group_ids = var.security_group_ids
-   }
+  #Uncomment this if you want to associate to VPC
+  # vpc_config {
+  #      subnet_ids = var.subnet_ids
+  #      security_group_ids = var.security_group_ids
+  #  }
 }
 
 #IAM Policies
